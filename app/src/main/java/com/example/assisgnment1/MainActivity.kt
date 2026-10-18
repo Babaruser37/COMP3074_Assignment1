@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             val overtimePay = paymentStats[1]
             val totalPay = paymentStats[2]
             val tax = paymentStats[3]
-            "Pay: $pay\nOvertime Pay: $overtimePay\nTotal Pay: $totalPay\nTax: $tax".also { resultTV.text = it }
+            "Pay: $pay\nOvertime Pay: $overtimePay\nTax: $tax \nTotal Pay: $totalPay".also { resultTV.text = it }
         }
 
         // Setup navigation to start AboutActivity
@@ -63,7 +63,8 @@ fun calcTax(hoursWorked: Double, hourlyRate: Double, taxRate: Double): List<Doub
         pay = 40.0 * hourlyRate
         overtimePay = (hoursWorked - 40.0) * hourlyRate * 1.5
     }
-    val totalPay = pay + overtimePay
+
     val tax = pay * taxRate
+    val totalPay = pay + overtimePay - tax
     return listOf(pay, overtimePay, totalPay, tax)
 }
